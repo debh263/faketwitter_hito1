@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">      
+      <%= link_to "Inicio", tweets_path, class:"new-item nav-link" %>  
+
+      <% if current_user %>
+              <%= link_to "Cerrar sesiòn", destroy_user_session_path, method: :delete, class:"new-item nav-link" %>         
+              <%= link_to "crear tweet", new_tweet_path, class:"new-item nav-link" %>         
+              
+      <%else %>
+              <%= link_to "Registrarse", new_user_registration_path, class:"new-item nav-link" %>         
+              <%= link_to "iniciar sesión", new_user_session_path, class:"new-item nav-link" %>         
+      <% end %>
+    </div>   
+  </div>
+</nav>

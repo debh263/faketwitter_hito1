@@ -1,0 +1,27 @@
+
+<%= form_with(model: @tweet, local: true) do |form| %>
+<%= puts @tweet.errors%>
+<% if @tweet.errors.any? %>
+<div  class="alert alert-danger" id="error_explanation">
+<h2><%= pluralize(@tweet.errors.count, "error") %> prohibited this story from being saved:</h2>
+
+<ul>
+<% @tweet.errors.full_messages.each do |message| %>
+<li><%= message %></li>
+<% end %>
+</ul>
+</div>
+<% end %> 
+    <div class="form-group">
+        <%= form.label :content, "Mensaje" %>
+        <%= form.text_area :content, class:"form-control" %>
+    </div>
+    <div class="form-group">
+        <%= form.label :image_url, "Url de imagen" %>
+        <%= form.text_field :image_url, class:"form-control" %>
+    </div>
+    <div class="py-3">
+        <%= form.submit "Create", class:"btn btn-secondary" %>
+    </div>
+<% end %>
+
