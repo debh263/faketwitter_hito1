@@ -8,6 +8,8 @@
         <div class="card-bnody">
             <p class="card-text "><%= tweet.content %></p>
         </div>
+    <%= link_to  "like", likes_path(tweet.id), method: :post, class:"btn btn-secondary" %>
+    <%= link_to  "retweet", root_path,  class:"btn btn-primary" %>
     </div>
     <% end %>
 <%else%>
@@ -16,7 +18,7 @@
     <%= image_tag "#{tweet.image_url}", class: "card-img-top" %>
         <div class="card-bnody">
             <p class="card-text "><%= tweet.content %></p>
-        </div>
+        </div>        
     </div>
     <% end %>
 <%end%>

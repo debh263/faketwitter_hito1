@@ -19,13 +19,13 @@ class TweetsController < ApplicationController
   end
 
   def create
+    @tweets = Tweet.order(:created_at).page 1
     @tweet = Tweet.new(tweet_params)
     if @tweet.save
       flash[:notice] = "Tu tweet ha sido creado. :)"
       redirect_to root_path      
-    else      
-      flash[:notice] = "Tu tweet no ha sido creado. :("                  
-      
+    else         
+      render :index      
     end
     
   end
