@@ -1,39 +1,45 @@
-<h1 class="py-4">Tweet</h1>
+
+<h1 class="py-4">fake-Tweet's</h1>
 
 <% if current_user %>
 <%= render "form"%>
-    <% @tweets.each do |tweet| %>    
-    <div class="card my-4">
-    <%= image_tag "#{tweet.image_url}", class: "card-img-top" %>
-        <div class="card-bnody">
-            <p class="card-text "><%= tweet.content %></p>
-        </div>
-    <%= link_to  "like", likes_path(tweet.id), method: :post, class:"btn btn-secondary" %>
-    <%= link_to  "retweet", root_path,  class:"btn btn-primary" %>
+<% @tweets.each do |tweet| %>
+<div class="card m-4 container">
+    <div class="my-3">
+        <%= image_tag "#{tweet.image_url}", class: "card-img-top", style:"width: 50%" %>
     </div>
-    <% end %>
+    <!-- CONTENT -->
+    <div class="card-bnody my-3">
+        <p class="card-text "><%= tweet.content %></p>
+    </div>
+    <!-- Buttons -->
+    <div class=" container my-4">
+        <%= link_to  "like", likes_path(tweet.id), method: :post, class:"btn btn-sm btn-primary rounded-circle mx-3" %>
+        <%= link_to  "retweet", root_path,  class:"btn btn-secondary btn-sm rounded-circle mx-3" %>
+    </div>
+</div>
+<% end %>
+
+<!-- OFF -->
 <%else%>
-    <% @tweets.each do |tweet| %>    
-    <div class="card my-4">
-    <%= image_tag "#{tweet.image_url}", class: "card-img-top" %>
-        <div class="card-bnody">
-            <p class="card-text "><%= tweet.content %></p>
-        </div>        
+<% @tweets.each do |tweet| %>
+<div class="card m-4 container">
+    <div class="my-3">
+        <%= image_tag "#{tweet.image_url}", class: "card-img-top", style:"width: 50%" %>
     </div>
-    <% end %>
+    <!-- CONTENT -->
+    <div class="card-bnody my-3">
+        <p class="card-text "><%= tweet.content %></p>
+    </div>
+</div>
+<% end %>
 <%end%>
 
 
 
 
 
-<% @tweets.each do |tweet| %>    
-<div class="card my-4">
-<%= image_tag "#{tweet.image_url}", class: "card-img-top" %>
-    <div class="card-bnody">
-        <p class="card-text "><%= tweet.content %></p>
-    </div>
-</div>
-<% end %>
 
-<%= paginate @tweets, param_name: :mostrar%>
+    <%= paginate @tweets, param_name: :mostrar, class: "justify-content-center"%>
+
+
